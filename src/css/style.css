@@ -37,10 +37,9 @@ a {
 
 .search-container {
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
   align-items: center;
   justify-content: center;
- 
 }
 
 form {
@@ -76,7 +75,7 @@ button:hover {
 .gallery-list {
   display: flex;
   flex-wrap: wrap;
-  justify-content:center;
+  justify-content: center;
   box-sizing: border-box;
   display: flex;
   flex-wrap: wrap;
@@ -95,12 +94,11 @@ button:hover {
   flex-direction: column;
   width: 360px;
   height: 200px;
-  
 }
-.card-image{
+.card-image {
   height: 70%;
 }
-.gallery-link:hover{
+.gallery-link:hover {
   opacity: 0.6;
 }
 .gallery-image {
@@ -111,11 +109,10 @@ button:hover {
   transition: opacity 0.3s;
 }
 
-
 .card-info {
   margin-top: 10px;
- display: flex;
- justify-content:space-evenly;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .info-item {
@@ -126,16 +123,15 @@ button:hover {
 }
 
 .info-item h3 {
-  
   margin: 0;
   font-size: 12px;
   font-weight: 600;
-  color:rgba(46, 47, 66, 1)
+  color: rgba(46, 47, 66, 1);
 }
 
 .info-item p {
   margin: 5px 0 0;
   font-size: 12px;
-   font-weight: 400;
+  font-weight: 400;
   color: #666;
 }
