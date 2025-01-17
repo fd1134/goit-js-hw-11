@@ -11,6 +11,7 @@ import "simplelightbox/dist/simple-lightbox.min.css";
 
 const form = document.querySelector("#search-form");
 const galleryList = document.querySelector(".gallery-list");
+const loader = document.querySelector("#loader");
 const baseUrl = "https://pixabay.com/api/?";
 const API_KEY = "48271120-e478f6712aa82518e8481b3a8";
 const searchParams = new URLSearchParams({
@@ -23,6 +24,7 @@ const searchParams = new URLSearchParams({
 
 form.addEventListener("submit", (evt) => {
   evt.preventDefault();
+  loader.classList.add("loader");
   searchParams.set("q", evt.currentTarget.elements.query.value.trim());
   const url = `${baseUrl}${searchParams.toString()}`;
   console.log(url);
@@ -35,7 +37,7 @@ form.addEventListener("submit", (evt) => {
     })
     .then((images) => {
       if (images.hits.length <= 0) {
-        throw new Error("searchErr");
+        throw new Error();
       }
       const galleryMarkup = images.hits
         .map(
@@ -85,15 +87,16 @@ form.addEventListener("submit", (evt) => {
       });
       simplo.refresh();
     })
-
     .catch((error) => {
       iziToast.error({
         message: `Sorry, there are no images matching your search query. Please try again!`,
         position: "topRight",
       });
-    });
-
+      galleryList.innerHTML = "";
+    })
+    .finally(loader.classList.remove("loader"));
+    
   form.reset();
 });
 
-const gallery = document.querySelector(".gallery");
+
