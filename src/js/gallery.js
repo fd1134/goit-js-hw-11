@@ -37,7 +37,9 @@ form.addEventListener("submit", (evt) => {
     })
     .then((images) => {
       if (images.hits.length <= 0) {
-        throw new Error("searchErr");
+        throw new Error(
+          "Sorry, there are no images matching your search query. Please try again!"
+        );
       }
       const galleryMarkup = images.hits
         .map(
@@ -80,6 +82,7 @@ form.addEventListener("submit", (evt) => {
         )
         .join("");
       galleryList.innerHTML = galleryMarkup;
+      loader.classList.remove("loader");
 
       let simplo = new SimpleLightbox(".gallery-list a", {
         captionsData: "alt",
@@ -90,14 +93,12 @@ form.addEventListener("submit", (evt) => {
 
     .catch((error) => {
       iziToast.error({
-        message: `Sorry, there are no images matching your search query. Please try again!`,
+        message: `${error}`,
         position: "topRight",
       });
       galleryList.innerHTML = "";
-    })
-    .finally(loader.classList.remove("loader"));
+      loader.classList.remove("loader");
+    });
 
   form.reset();
 });
-
-const gallery = document.querySelector(".gallery");
