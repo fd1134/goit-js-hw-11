@@ -27,7 +27,6 @@ form.addEventListener("submit", (evt) => {
   loader.classList.add("loader");
   searchParams.set("q", evt.currentTarget.elements.query.value.trim());
   const url = `${baseUrl}${searchParams.toString()}`;
-  console.log(url);
   fetch(url)
     .then((response) => {
       if (!response.ok) {
